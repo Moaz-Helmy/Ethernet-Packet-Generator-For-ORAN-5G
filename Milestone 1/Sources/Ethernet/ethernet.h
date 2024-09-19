@@ -14,8 +14,6 @@
 #define CRC_SIZE                4
 
 
-#define DEBUG_MODE_ON
-
 
 #include <fstream>
 #include <iostream>

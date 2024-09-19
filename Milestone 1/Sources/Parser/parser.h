@@ -6,7 +6,7 @@
 #include <iostream>
 using namespace std;
 
-#define DEBUG_MODE_ON
+
 class Parser
 {
     enum selection
