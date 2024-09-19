@@ -18,15 +18,6 @@
 #include <fstream>
 #include <iostream>
 using namespace std;
-/*************Declarations***************/
-/*
-    Description: A structure that holds ethernet fields. It'll be used for configuration purposes
-    Attributes:
-        - eth_DestAdr --> 6 Bytes
-        - eth_SrcAdr --> 6 Bytes
-        - eth_length --> 2 Bytes
-        - eth_payload --> 46:1500 Bytes
-*/
 
 struct EthConfig{
     uint16_t LineRate;
@@ -38,19 +29,7 @@ struct EthConfig{
     uint16_t BurstSize;
     uint16_t BurstPeriodicity_us;
 };
-/*
-    Description: A class that contains all the ethernet frame information
-    Attributes:
-        - eth_preamble --> 6 Bytes
-        - eth_SFD --> 1 Byte
-        - eth_DestAdr --> 6 Bytes
-        - eth_SrcAdr --> 6 Bytes
-        - eth_length --> 2 Bytes
-        - eth_payload --> 46:1500 Bytes
-        - eth_CRC --> 4 Bytes
-    Methods:
 
-*/
 
 class EthPacket
 {
