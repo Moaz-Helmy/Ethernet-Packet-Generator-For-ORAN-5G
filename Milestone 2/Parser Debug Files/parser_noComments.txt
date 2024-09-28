@@ -1,0 +1,13 @@
+Eth.LineRate = 10
+Eth.CaptureSizeMs = 10
+Eth.MinNumOfIFGsPerPacket = 12
+Eth.DestAddress =  0x010101010101
+Eth.SourceAddress = 0x333333333333
+Eth.MaxPacketSize  = 1500      
+
+Oran.SCS  = 30
+Oran.MaxNrb = 0
+Oran.NrbPerPacket = 30
+
+Oran.PayloadType = fixed
+Oran.Payload = iq_file.txt

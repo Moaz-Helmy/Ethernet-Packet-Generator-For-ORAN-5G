@@ -1,7 +1,23 @@
+/*
+    Author: Moaz Mohamed 
+    Description: This is the header file for the parser class
+    Date: 19/9/2024
+*/
+
+/**************File Guard*******************/
 #ifndef PARSER_H
 #define PARSER_H
 
+/**************Necessary Includes*******************/
+
+/*
+    Include ethernet.h to be able to define the EthConfig Structure
+*/
 #include "../Ethernet/ethernet.h"
+
+/*
+    Included for file processing
+*/
 #include <fstream>
 #include <iostream>
 using namespace std;

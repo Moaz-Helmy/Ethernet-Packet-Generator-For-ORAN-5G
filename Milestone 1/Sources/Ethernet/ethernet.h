@@ -1,3 +1,9 @@
+/*
+    Author: Moaz Mohamed 
+    Description: This is the header file for the ethernet class
+    Date: 19/9/2024
+*/
+
 /**********File protection*************/
 #ifndef ETHERNET_H
 #define ETHERNET_H

@@ -1,3 +1,9 @@
+/*
+    Author: Moaz Mohamed 
+    Description: This is the source file for the parser class
+    Date: 19/9/2024
+*/
+
 #include "parser.h"
 #include <iostream>
 #include <fstream>

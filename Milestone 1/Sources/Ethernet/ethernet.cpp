@@ -1,3 +1,8 @@
+/*
+    Author: Moaz Mohamed 
+    Description: This is the source file for the ethernet class
+    Date: 19/9/2024
+*/
 #include <iomanip>
 #include <cmath>
 #include <cstdlib>

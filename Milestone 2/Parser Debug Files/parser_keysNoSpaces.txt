@@ -1,0 +1,13 @@
+Eth.LineRate
+Eth.CaptureSizeMs
+Eth.MinNumOfIFGsPerPacket
+Eth.DestAddress
+Eth.SourceAddress
+Eth.MaxPacketSize
+
+Oran.SCS
+Oran.MaxNrb
+Oran.NrbPerPacket
+
+Oran.PayloadType
+Oran.Payload
