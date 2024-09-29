@@ -27,16 +27,6 @@ struct ORANConfig{
 };
 
 class ORAN{
-    struct ORANHeader
-    {
-        uint8_t firstByte;
-        uint8_t frameID;
-        uint8_t subFrameID;
-        uint8_t slotID;
-        uint8_t symbolID; //0:13
-    }ORANHeader_struct;
-    
-
     short* I;
     short* Q;
     string* fileData;
@@ -47,11 +37,13 @@ class ORAN{
     string temp;
     uint64_t IQ_sample_index;
 
-    uint8_t** ORAN_GeneratedPackets;
+    
     uint8_t* ORAN_AllPacketsConcatenated;
 
     void ORAN_convertToByteArray(uint64_t , uint8_t , uint8_t *);
     public:
+
+    uint8_t** ORAN_GeneratedPackets;
 
     uint64_t numOfSlotsPerSubframe;
     uint64_t numOfTotalSlots;

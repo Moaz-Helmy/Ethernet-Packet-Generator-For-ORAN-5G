@@ -16,6 +16,7 @@ class ECPRI{
     uint8_t ecpriPayload;
     uint8_t ecpriPCid_RTCid=0x00;
     uint8_t ecpriSeqId;
+    ORAN* oran_obj;
     
     uint64_t numOfECPRIPackets;
     uint64_t ECPRIPacketSize;
@@ -24,8 +25,9 @@ class ECPRI{
     public:
     ECPRI(ORAN*);  
     ~ECPRI();  
-    void ECPRI_BuildPackets();
+    void ECPRI_formulatePackets();
     void ECPRI_memoryAllocation();
+    void ECPRI_writeGeneratedPacketsToFile();
 };
 
 

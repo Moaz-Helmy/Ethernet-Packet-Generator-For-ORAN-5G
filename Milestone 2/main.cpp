@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
     
     Parser parse_obj(argv[1], &Eth, &Oran);
     ORAN oran_obj(&Oran);
-    //ECPRI ecpri_obj(&oran_obj);
-    //EthPacket obj(&Eth, argv[2]);
+    ECPRI ecpri_obj(&oran_obj);
+    EthPacket obj(&Eth, argv[2]);
     
     
     return 0;

@@ -176,9 +176,7 @@ void ORAN::ORAN_fillPacketsHeader()
     // First Byte
     for (int packet = 0; packet < numOfNeededEthernetPackets; packet++)
     {
-
-        ORANHeader_struct.firstByte = 0x00;
-        ORAN_GeneratedPackets[packet][0] = ORANHeader_struct.firstByte;
+        ORAN_GeneratedPackets[packet][0] = 0;
     }
 
     // FrameID and SubFrameID
@@ -345,7 +343,7 @@ void ORAN::ORAN_fillPayload()
 
 void ORAN::ORAN_writeGeneratedPacketsToFile()
 {
-    ofstream outFile("Generated_ORAN_Packets.txt", ios::out);
+    ofstream outFile("ORAN Debug Files/Generated_ORAN_Packets.txt", ios::out);
     if (!outFile.is_open())
     {
         cout << "Couldn't Open File.";
