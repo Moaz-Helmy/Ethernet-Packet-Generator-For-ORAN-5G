@@ -1,0 +1,39 @@
+Ethernet Parameters:
+	LineRate = 10 Gbps
+	CaptureSizeMs = 10 ms
+	MinNumOfIFGsPerPacket = 12
+	DestAddress = 1103823438081
+	SourceAddress = 56294995342131
+	MaxPacketSize = 1500 Bytes
+	packetSizeIncludingIFGsPerPacket = 1500 Bytes
+	numOfGeneratedPackets = 8333 Packets
+	numOfNeededPackets = 300 Packets
+	numOfEmptyPackets = 8033 Packets
+	availablePayloadSize = 1462 Bytes
+	neededPayloadSize = 224 Bytes
+	numOfIFGsToCompensateForTheEmptyPayloadBytes = 1238
+	numOfExtraBytes(Due to packet generation interruption) = 500 Bytes
+	numOfIFGsPerPacket = 1250
+ECPRI Parameters:
+	numOfECPRIPackets = 300 Packets
+	ECPRIPacketSize = 224 Bytes
+	ECPRIPayloadSize(ORAN Packet) = 216 Bytes
+ORAN Parameters:
+	SCS = 30 KHz
+	MaxNrbPerSymbol = 273
+	NrbPerPacket = 255
+	PayloadType = fixed
+	IQSamplesFileName = iq_file.txt
+	numOfIQSamplesInFile = 860160
+	numOfFrames = 1
+	numOfSubframes = 10
+	numOfSlotsPerSubframe = 2
+	totalNumOfSlots = 20
+	numOfSymbolsPerSlot = 14
+	totalNumOfSymbols = 280
+	numOfNeededIQSamples = 982800
+	numOfNeededPackets = 300
+	approximateNumOfPacketsPerFrame = 300
+	approximateNumOfPacketsPerSubframe = 30
+	approximateNumOfPacketsPerSlot = 15
+	approximateNumOfPacketsPerSymbol = 2

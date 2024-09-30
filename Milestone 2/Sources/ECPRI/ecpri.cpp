@@ -18,7 +18,6 @@ ECPRI::ECPRI(ORAN* oran_obj=NULL)
     ecpriPayload = this->oran_obj->ORANPacketSize;
     numOfECPRIPackets = this->oran_obj->numOfNeededEthernetPackets;
     ECPRIPacketSize = ECPRI_HEADER_SIZE + ecpriPayload;
-
     ECPRI_memoryAllocation();
     ECPRI_formulatePackets();
 }
@@ -42,7 +41,13 @@ void ECPRI::ECPRI_memoryAllocation()
     }
     for(int pacekt=0;pacekt<numOfECPRIPackets; pacekt++)
     {
+        
         ECPRI_GeneratedPackets[pacekt] = new (nothrow) uint8_t[ECPRIPacketSize];
+        if(ECPRI_GeneratedPackets[pacekt]==nullptr)
+        {
+            cout<<"Memory Failure.";
+            exit(1);
+        }
     }
 }
 

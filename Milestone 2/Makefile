@@ -18,6 +18,7 @@ directories:
 	mkdir -p "ORAN Debug Files"
 	mkdir -p "ECPRI Debug Files"
 	mkdir -p "Compilation"
+	mkdir -p "Detected Parameters"
 
 # Source target 1
 Compilation/main.o: main.cpp

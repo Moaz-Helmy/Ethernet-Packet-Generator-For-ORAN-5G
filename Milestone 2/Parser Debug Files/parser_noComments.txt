@@ -7,7 +7,7 @@ Eth.MaxPacketSize  = 1500
 
 Oran.SCS  = 30
 Oran.MaxNrb = 0
-Oran.NrbPerPacket = 30
+Oran.NrbPerPacket = 255
 
 Oran.PayloadType = fixed
 Oran.Payload = iq_file.txt

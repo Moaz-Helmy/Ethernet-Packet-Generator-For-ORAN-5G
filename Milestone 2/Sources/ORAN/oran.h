@@ -32,8 +32,8 @@ class ORAN{
     string* fileData;
     ofstream debugFile;
     ifstream IQFile;
-    ORANConfig* oran_config;
-    uint64_t linesCounter;
+    
+    
     string temp;
     uint64_t IQ_sample_index;
 
@@ -42,7 +42,8 @@ class ORAN{
 
     void ORAN_convertToByteArray(uint64_t , uint8_t , uint8_t *);
     public:
-
+    ORANConfig* oran_config;
+    uint64_t linesCounter;
     uint8_t** ORAN_GeneratedPackets;
 
     uint64_t numOfSlotsPerSubframe;

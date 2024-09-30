@@ -79,7 +79,6 @@ void ORAN::ORAN_readIQSamples()
     for (line = 0; line < linesCounter; line++)
     {
         getline(IQFile, fileData[line]);
-        // cout<<fileData[line]<<endl;
 
         /*
             Separaete I and Q
@@ -96,27 +95,18 @@ void ORAN::ORAN_readIQSamples()
         tempQ = fileData[line].substr(spaceIndex + 1, fileData[line].size() - spaceIndex + 1);
         I[line] = (short)stoi(tempI);
         Q[line] = (short)stoi(tempQ);
-         //cout<<"I = "<<I[line]<<endl<<"Q = "<<Q[line]<<endl;
     }
     IQFile.close();
 }
 
 void ORAN::ORAN_parametersCalculations()
 {
-
-    cout << (int)oran_config->MaxNrb << endl
-         << (int)oran_config->NrbPerPacket << endl
-         << (int)oran_config->numOfSubframes << endl
-         << oran_config->payload << endl
-         //<<(int)oran_config->payloadParameterLine<<endl
-         << oran_config->PayloadType << endl
-         << (int)oran_config->SCS << endl;
     numOfSlotsPerSubframe = oran_config->SCS / MINIMAL_SCS;
     numOfTotalSlots = numOfSlotsPerSubframe * oran_config->numOfSubframes;
     numOfSymbolsPerSlot = SYMBOLS_PER_SLOT_NORMAL_CP;
     numOfTotalSymols = numOfSymbolsPerSlot * numOfTotalSlots;
-    numOfNeededIQSamples = oran_config->MaxNrb * IQ_SAMPLES_PER_RB;
     numOfNeededEthernetPackets = ceil((double)(oran_config->MaxNrb * numOfTotalSymols) / (double)(oran_config->NrbPerPacket));
+    numOfNeededIQSamples = oran_config->MaxNrb * IQ_SAMPLES_PER_RB * numOfNeededEthernetPackets;
     ORANPacketHeaderSize = ORAN_HEADER_SIZE;
     numOfIQSamplesPerPacket = oran_config->NrbPerPacket * IQ_SAMPLES_PER_RB;
     ORANPacketSize = ORAN_HEADER_SIZE + RB_HEADER_SIZE + numOfIQSamplesPerPacket*2*SAMPLE_BYTES;
@@ -131,18 +121,6 @@ void ORAN::ORAN_parametersCalculations()
     numOfErrorPacketsPerSlot = numOfPacketsPerSlot * numOfSlotsPerSubframe - numOfPacketsPerSubframe;
     numOfPacketsPerSymbol = ceil((double)oran_config->MaxNrb / (double)oran_config->NrbPerPacket);
     numOfErrorPacketsPerSymbol = numOfPacketsPerSymbol * numOfSymbolsPerSlot - numOfPacketsPerSlot;
-    cout << numOfPacketsPerFrame << endl
-         << numOfFrames << endl
-         << numOfNeededEthernetPackets << endl
-         << numOfPacketsPerSubframe << endl
-         << numOfPacketsPerSlot << endl
-         << numOfPacketsPerSymbol << endl
-         << numOfSlotsPerSubframe << endl
-         << oran_config->numOfSubframes << endl
-         << numOfErrorPacketsPerSlot << endl
-         << numOfErrorPacketsPerSymbol << endl
-         << linesCounter <<endl
-         << (int)I[677310-1]<<endl;
 }
 
 void ORAN::ORAN_memoryAllocation()
@@ -320,7 +298,6 @@ void ORAN::ORAN_fillPayload()
             
             for(int byte=0 ; byte<SAMPLE_BYTES ; byte++)
             {
-                //cout<<hex<<uppercase<<setw(2)<<setfill('0')<<static_cast<int>(byteArrI[byte])<<" "<<static_cast<int>(byteArrI[byte])<<endl;
                 ORAN_GeneratedPackets[packet][byte_index]=byteArrI[byte];
                 byte_index++;
             }

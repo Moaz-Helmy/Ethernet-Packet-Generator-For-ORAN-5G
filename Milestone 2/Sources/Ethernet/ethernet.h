@@ -15,6 +15,7 @@
 
 #include <fstream>
 #include <iostream>
+#include "../ECPRI/ecpri.h"
 using namespace std;
 /*************Declarations***************/
 /*
@@ -53,41 +54,45 @@ struct EthConfig{
 class EthPacket
 {
     ofstream outputFileHandler;
+    string outputFileName;
     uint64_t eth_packetIndex;
     uint16_t eth_EtherType = ETHER_TYPE;
     uint16_t eth_PacketSize;
-    uint8_t *eth_Payload;
     uint8_t *eth_IFGsPerPacket;
     uint32_t eth_CRC;
     uint8_t **eth_GeneratedPackets;
     uint8_t *eth_ExtraBytes;
     uint8_t *eth_IdleBytes;
     EthConfig *eth_p;
+    ECPRI* ecpri_obj;
+    uint8_t **eth_emptyPackets;
 
     uint64_t generatedBytes;
     uint16_t numOfExtraBytes; // IFGs incase of interrupted packet generation
     uint64_t numOfGeneratedPackets;
     uint8_t numOfExtraIFGs; // for alignment
-    uint64_t payloadSize;
-    uint16_t numOfPacketsPerPeriod;
-    uint16_t numOfIdlePackets;
-    uint16_t numOfIdleBytes;
-    uint16_t numOfTotalIFGs;
-    uint16_t numOfTotalIdleBytesPerPeriod;
-    uint16_t numOfPacketsInLastBurst;
-    uint16_t numOfCompleteBursts;
-
+    uint64_t neededPayloadSize;
+    uint64_t availablePayloadSize;
+    
+    uint16_t numOfTotalIFGsPerPacket;
+    
+    
+    
+    uint64_t numOfNeededPackets;
+    uint64_t numOfIFGsToCompenstaeForSparedPayloadBytes;
+    
+    uint64_t numOfEmptyPackets;
+    uint64_t numOfIFGsInEmptyPackets;
     void eth_writeGeneratedPackets(string , uint16_t);
 
-    void eth_randomizePayload();
     void eth_convertToByteArray(uint64_t , uint8_t , uint8_t *);
 
     uint32_t eth_calculate4ByteCRC(uint8_t *, uint32_t );
 
-    void eth_writeIntoGeneratedPacketsDB(uint8_t *, uint16_t , uint16_t , string );
+    void eth_writeIntoGeneratedPacketsDB(uint8_t *, uint64_t , uint64_t , string );
 
 public:
-    EthPacket(EthConfig *, string );
+    EthPacket(EthConfig *,ECPRI*, string );
 
     ~EthPacket();
 
@@ -112,18 +117,23 @@ public:
 
     void eth_generateExtraBytesForInterruptedPacket();
 
-    void eth_generateIdleBytes();
 
     void eth_sendPacket(uint8_t *);
-    void eth_sendIdleBytes();
+
 
     void eth_sendExtraBytes();
 
-    void eth_sendAll();
-
-    void eth_sendCompleteBursts();
+  
 
     
-    void eth_sendLastBurtAndExtraBytes();
+
+    
+    
+
+    void eth_sendDataPackets();
+
+    void eth_fillEmptyPackets();
+    void eth_outputAllDetectedParametersToFile();
+    
 };
 #endif //ETHERNET_H
