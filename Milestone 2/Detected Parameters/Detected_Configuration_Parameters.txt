@@ -31,7 +31,7 @@ ORAN Parameters:
 	totalNumOfSlots = 20
 	numOfSymbolsPerSlot = 14
 	totalNumOfSymbols = 280
-	numOfNeededIQSamples = 982800
+	numOfNeededIQSamples = 918000
 	numOfNeededPackets = 300
 	approximateNumOfPacketsPerFrame = 300
 	approximateNumOfPacketsPerSubframe = 30

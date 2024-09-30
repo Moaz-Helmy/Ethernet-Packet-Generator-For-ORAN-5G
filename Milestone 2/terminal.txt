@@ -1,0 +1,9 @@
+mkdir -p "Parser Debug Files"
+mkdir -p "Ethernet Debug Files"
+mkdir -p "ORAN Debug Files"
+mkdir -p "ECPRI Debug Files"
+mkdir -p "Compilation"
+mkdir -p "Detected Parameters"
+g++ -c Sources/ORAN/oran.cpp -o Compilation/oran.o
+g++ Compilation/main.o Compilation/parser.o Compilation/ethernet.o Compilation/oran.o Compilation/ecpri.o -o Compilation/programOutput
+Packets has been generated and written into output_file.txt successfully.

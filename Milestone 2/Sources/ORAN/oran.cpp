@@ -106,9 +106,9 @@ void ORAN::ORAN_parametersCalculations()
     numOfSymbolsPerSlot = SYMBOLS_PER_SLOT_NORMAL_CP;
     numOfTotalSymols = numOfSymbolsPerSlot * numOfTotalSlots;
     numOfNeededEthernetPackets = ceil((double)(oran_config->MaxNrb * numOfTotalSymols) / (double)(oran_config->NrbPerPacket));
-    numOfNeededIQSamples = oran_config->MaxNrb * IQ_SAMPLES_PER_RB * numOfNeededEthernetPackets;
-    ORANPacketHeaderSize = ORAN_HEADER_SIZE;
     numOfIQSamplesPerPacket = oran_config->NrbPerPacket * IQ_SAMPLES_PER_RB;
+    numOfNeededIQSamples = numOfIQSamplesPerPacket * numOfNeededEthernetPackets;
+    ORANPacketHeaderSize = ORAN_HEADER_SIZE;
     ORANPacketSize = ORAN_HEADER_SIZE + RB_HEADER_SIZE + numOfIQSamplesPerPacket*2*SAMPLE_BYTES;
     numOfFrames = ceil((double)oran_config->numOfSubframes / (double)10);
     numOfSlotsPerFrame = numOfSlotsPerSubframe * 10;
